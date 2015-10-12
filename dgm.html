@@ -3,7 +3,7 @@
 </head>
 
 <body>
-  <h1>Daily Good </h1>
+  <h1>Daily Good: Inspire to Rewire </h1>
 
    {{> good }}
 
@@ -34,15 +34,20 @@
     <div class="mdl-card__media">
       <img src="{{gratitudeimage}}" align="middle" border="0" alt="" style="padding:10px;">
     </div>
+    {{> loginButtons}}
+<!--
     <form class="new-gratitude">
       <div class="mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="grateful" />
         <label class="mdl-textfield__label" for="grateful">What are you Grateful For?</label>
       </div>
     </form>
+-->
+    {{#if currentUser}}
     <form class="new-gratitude">
             <input type="text" name="text" placeholder="What are you grateful for?" />
     </form>
+    {{/if}}
     <div class="mdl-card__supporting-text">
       <ul>
         {{#each gratitudes}}
@@ -54,11 +59,14 @@
   <div class="demo-separator mdl-cell--1-col"></div>
   <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
     <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__title mdl-color--teal-300">
-                  <h2 class="mdl-card__title-text">Hack your Mind: Science</h2>
+                <div class="mdl-card__title mdl-color--green-300">
+                  <h2 class="mdl-card__title-text">Hack your Mind: Curated Content </h2>
                 </div>
                 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                  http://www.bakadesuyo.com/2014/09/be-more-successful/
+                  <a class="embedly-card" href="https://www.youtube.com/watch?v=vESKrzvgA40">Mindfulness. Brain Hand Model. Dan Siegel. Empathy and Cognition.</a>
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+                  <a class="embedly-card" href="http://www.positivityresonance.com/meditations.html">PositivityResonance:Love 2.0</a>
+<script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
                   <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
@@ -70,5 +78,11 @@
 </template>
 
 <template name="gratitude">
-   <li>{{text}} </li>
+   <li>
+     <span class="text"><strong>{{> user}}</strong> - {{text}} </span>
+   </li>
+</template>
+
+<template name="user">
+  <p>{{firstName}} </p>
 </template>

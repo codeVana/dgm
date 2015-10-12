@@ -34,14 +34,6 @@ if (Meteor.isClient) {
       gratitudes: function() {
           return Gratitudes.find({});
       }
-      /*
-      gratitudes: [
-        {text:  "Grateful for the office hours in the hackathon-dev-support by Useful IO folks"},
-        {text: "Grateful for so many great packages to make a meteor app"},
-        {text: "Grateful for the free hosting for the app"}
-      ]
-      */
-
     });
 
     Template.good.events({
@@ -49,20 +41,30 @@ if (Meteor.isClient) {
         callGood();
       },
       "submit .new-gratitude": function(event) {
-  //      event.preventDefault();
+        event.preventDefault();
 
         // Get value from form element
         var text = event.target.text.value;
         console.log(text);
-        // Insert a task into the collection
+        // Insert  into the collection
         Gratitudes.insert({
           text: text,
-          createdAt: new Date() // current time
+          createdAt: new Date(), // current time
+          owner: Meteor.userId(),
+          username: Meteor.user().username
         });
 
         // Clear form
         event.target.text.value = "";
       }
+    });
+    Template.user.helpers({
+      firstName: function() {
+        return Meteor.user().profile.first_name;
+      }
+    })
+    Accounts.ui.config({
+      passwordSignupFields: "USERNAME_ONLY"
     });
 }
 
