@@ -1,0 +1,74 @@
+<head>
+  <title>daily-good-quote</title>
+</head>
+
+<body>
+  <h1>Daily Good </h1>
+
+   {{> good }}
+
+</body>
+
+<template name="good">
+
+
+<div class="mdl-grid demo-content">
+  <div class="mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title mdl-color--teal-300">
+          <h2 class="mdl-card__title-text">Inspirational Quote</h2>
+    </div>
+    <div class="mdl-card__media">
+      <img src="{{goodimage}}" border="0" alt="" style="padding:10px;">
+    </div>
+    <div class="mdl-card__supporting-text">
+      <h4> {{ goodquote }} </h4>
+    </div>
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-color--lime mdl-button--accent">Nxt</button>
+  </div>
+
+  <div class="demo-separator mdl-cell--1-col"></div>
+  <div class="mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title mdl-color--purple-300">
+          <h2 class="mdl-card__title-text">Wall of Gratitude</h2>
+    </div>
+    <div class="mdl-card__media">
+      <img src="{{gratitudeimage}}" align="middle" border="0" alt="" style="padding:10px;">
+    </div>
+    <form class="new-gratitude">
+      <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" type="text" id="grateful" />
+        <label class="mdl-textfield__label" for="grateful">What are you Grateful For?</label>
+      </div>
+    </form>
+    <form class="new-gratitude">
+            <input type="text" name="text" placeholder="What are you grateful for?" />
+    </form>
+    <div class="mdl-card__supporting-text">
+      <ul>
+        {{#each gratitudes}}
+          {{> gratitude}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="demo-separator mdl-cell--1-col"></div>
+  <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+    <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+                <div class="mdl-card__title mdl-color--teal-300">
+                  <h2 class="mdl-card__title-text">Hack your Mind: Science</h2>
+                </div>
+                <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                  http://www.bakadesuyo.com/2014/09/be-more-successful/
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                  <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
+                </div>
+   </div>
+  </div>
+</div>
+
+</template>
+
+<template name="gratitude">
+   <li>{{text}} </li>
+</template>
